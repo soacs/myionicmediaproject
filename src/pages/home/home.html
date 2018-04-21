@@ -7,8 +7,38 @@
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 >
+        <ion-card class="block">
+          <p>Record Demo</p>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+          <button ion-button primary (click)="stopRecording()" *ngIf="recording"><ion-icon name="mic-off"></ion-icon>&nbsp;&nbsp;Stop Recording</button>
+          <button ion-button primary (click)="startRecording()" *ngIf="!recording"><ion-icon name="mic"></ion-icon>&nbsp;&nbsp;Start Recording</button>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-list>
+      <ion-item>
+        <p>Play file</p>
+        <button ion-button clear item-end large (click)="play()"><ion-icon name="play"></ion-icon></button>
+      </ion-item>
+      <ion-item>
+        <p>view Duration</p>
+        <button ion-button clear item-start large (click)="getDuration()"><ion-icon name="time"></ion-icon>&nbsp;&nbsp;Get Duration</button>
+      </ion-item>
+      <ion-item>
+        <p>Duration:</p>
+        {{duration}}
+      </ion-item>
+    </ion-list>
+
 </ion-content>
