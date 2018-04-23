@@ -39,6 +39,15 @@
         <p>Duration:</p>
         {{duration}}
       </ion-item>
+
+      <ion-item>
+        <p>list items in Directory</p>
+        <button ion-button clear item-start large (click)="listDirItems()"><ion-icon name="list"></ion-icon>&nbsp;&nbsp;List Directory items</button>
+      </ion-item>
+      <ion-item>
+        <p>Items:</p>
+        {{items | json}}
+      </ion-item>
     </ion-list>
 
 </ion-content>
