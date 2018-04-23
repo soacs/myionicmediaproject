@@ -36,6 +36,8 @@ export class HomePage {
     console.log("this.file.dataDirectory = " + this.file.dataDirectory);
     console.log("this.mediaDirectory = " + this.mediaDirectory);
     console.log("this.filePath = " + this.filePath);
+
+
   }
 
   listDirItems() {
@@ -88,6 +90,7 @@ export class HomePage {
   }
 
   startRecording() {
+    //this.file.createFile(this.file.dataDirectory + "mydir", 'test.log', true);
     // Recording to a file
     console.log("Start recording to file path named: " + this.filePath);
     this.audio = this.media.create(this.filePath);
