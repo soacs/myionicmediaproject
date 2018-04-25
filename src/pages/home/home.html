@@ -32,6 +32,10 @@
         <button ion-button clear item-end large (click)="play()"><ion-icon name="play"></ion-icon></button>
       </ion-item>
       <ion-item>
+        <p>Position</p>
+       {{position}}
+      </ion-item>
+      <ion-item>
         <p>view Duration</p>
         <button ion-button clear item-start large (click)="getDuration()"><ion-icon name="time"></ion-icon>&nbsp;&nbsp;Get Duration</button>
       </ion-item>
@@ -47,6 +51,11 @@
       <ion-item>
         <p>Items:</p>
         {{items | json}}
+      </ion-item>
+
+      <ion-item>
+        <p>play sound file</p>
+        <button ion-button clear item-start large (click)="playM4A()"><ion-icon name="list"></ion-icon>Play sounds</button>
       </ion-item>
     </ion-list>
 

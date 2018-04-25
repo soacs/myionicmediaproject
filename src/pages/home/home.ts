@@ -14,8 +14,9 @@ export class HomePage {
   items;
   audio: MediaObject;
   mediaDirectory: string;
-  fileName: string = "myfile.mp3";
+  fileName: string = "myfile.3gp";
   filePath: string;
+  position: string;
 
   constructor(public navCtrl: NavController, private media: Media, public platform: Platform, public file: File) {
 
@@ -90,18 +91,35 @@ export class HomePage {
   }
 
   startRecording() {
-    //this.file.createFile(this.file.dataDirectory + "mydir", 'test.log', true);
+    //this.file.createFile(this.file.dataDirectory + "mydir", 'myfile.3gp', true);
     // Recording to a file
     console.log("Start recording to file path named: " + this.filePath);
     this.audio = this.media.create(this.filePath);
+    this.audio.onStatusUpdate.subscribe(status => console.log(status)); // fires when file status changes
+    this.audio.onSuccess.subscribe(() => console.log('Action is successful'));
+    this.audio.onError.subscribe(error => console.log('Error!', error));
     this.audio.startRecord();
     this.recording = true;
+    this.listDir(this.file.dataDirectory, "mydir");
   }
 
   stopRecording() {
     console.log("Stop recording to file path named: " + this.filePath);
     this.audio.stopRecord();
+    this.audio.release();
     this.recording = false;
   }
+
+  playM4A() {
+       //let mp3URL = getMediaURL("http://angularorange.io/test.m4a");
+       let media = this.media.create('http://angularorange.io/test.m4a');
+
+    media.play();
+   }
+
+   mediaError(e) {
+  console.log('Media Error');
+     console.log(JSON.stringify(e));
+}
 
 }
